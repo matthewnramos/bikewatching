@@ -68,10 +68,7 @@ h1 { margin: 0.375rem 0; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; }
 .flow-key::before { content: ''; width: 1rem; height: 1rem; flex: 0 0 auto; border-radius: 50%; background: var(--flow-color); border: 1px solid #fff; outline: 1px solid #64748b; }
 .lane-key { font-size: 0.875rem; }
 .lane-key::before { content: ''; width: 1.5rem; border-top: 3px solid #15803d; }
-#map-help { margin-bottom: 0.25rem; font-size: 0.875rem; }
-.size-note, footer { color: var(--color-muted); font-size: 0.75rem; }
-.size-note { margin-top: 0; }
-footer { margin-top: 1.5rem; }
+footer { margin-top: 1.5rem; color: var(--color-muted); font-size: 0.75rem; }
 footer p { margin-bottom: 0; }
 
 @media (min-width: 48rem) {
