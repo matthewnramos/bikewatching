@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore Bluebikes traffic and bike lanes in Boston and Cambridge during March 2024.">
+  <title>Bikewatching: Boston &amp; Cambridge</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css">
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="map.css">
+  <script type="module" src="map.js"></script>
+</head>
+<body>
+  <header class="page-header">
+    <div>
+      <a class="portfolio-link" href="https://matthewnramos.github.io/portfolio/">Matthew Ramos / Portfolio</a>
+      <h1>Bikewatching</h1>
+      <p>Bluebikes traffic in Boston &amp; Cambridge, March 2024.</p>
+    </div>
+    <div class="time-filter">
+      <label for="time-slider">Filter by time</label>
+      <div class="time-readout" aria-live="polite">
+        <time id="selected-time" hidden></time>
+        <em id="any-time">Any time</em>
+      </div>
+      <input id="time-slider" type="range" min="-1" max="1440" step="1" value="-1" aria-describedby="time-help" aria-valuetext="Any time" disabled>
+      <div class="time-scale" aria-hidden="true"><span>All day</span><span>Noon</span><span>Midnight</span></div>
+      <p id="time-help">Within one hour of the selected time, in Boston local time.</p>
+    </div>
+  </header>
+  <main>
+    <div class="map-toolbar">
+      <p id="status" role="status">Loading bike lanes, stations, and rides…</p>
+      <div class="map-actions">
+        <button id="any-time-button" type="button" disabled>Any time</button>
+        <button id="reset-map" type="button" disabled>Reset map</button>
+        <button id="retry" type="button" hidden>Retry loading</button>
+      </div>
+    </div>
+    <div id="map" aria-label="Interactive map of Bluebikes stations and bike lanes" aria-describedby="map-help" aria-busy="true"></div>
+    <div class="map-key">
+      <div class="legend" aria-label="Station traffic flow legend">
+        <span class="legend-label">Station flow</span>
+        <span class="flow-key" style="--departure-ratio: 1">More departures</span>
+        <span class="flow-key" style="--departure-ratio: 0.5">Balanced</span>
+        <span class="flow-key" style="--departure-ratio: 0">More arrivals</span>
+      </div>
+      <span class="lane-key">Bike lanes</span>
+    </div>
+    <p id="map-help">Larger circles mean more traffic. Hover or tap a station for counts. Drag to pan; use the map buttons to zoom.</p>
+    <p class="size-note">Circle areas represent arrivals + departures. Filtered views use a larger size scale so stations remain visible.</p>
+    <aside id="station-tooltip" class="station-tooltip" aria-live="polite" hidden>
+      <h2 id="station-name"></h2>
+      <p id="station-flow"></p>
+      <dl>
+        <div><dt>Total traffic</dt><dd id="station-total"></dd></div>
+        <div><dt>Departures</dt><dd id="station-departures"></dd></div>
+        <div><dt>Arrivals</dt><dd id="station-arrivals"></dd></div>
+      </dl>
+    </aside>
+    <noscript><p>Enable JavaScript to explore the interactive map.</p></noscript>
+  </main>
+  <footer>
+    <p>Data: <a href="https://dsc106.com/labs/lab07/">DSC 106 / Bluebikes</a>, <a href="https://bostonopendata-boston.opendata.arcgis.com/datasets/boston::existing-bike-network-2022">City of Boston</a>, and <a href="https://github.com/cambridgegis/cambridgegis_data/tree/main/Recreation/Bike_Facilities">City of Cambridge</a>.</p>
+  </footer>
+</body>
+</html>
